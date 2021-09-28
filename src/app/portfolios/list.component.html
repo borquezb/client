@@ -13,7 +13,7 @@
         <tr *ngFor="let portfolio of portfolios">
             <td>{{portfolio.number}}</td>
             <td>{{portfolio.name}}</td>
-            <td>{{portfolio.balance}}</td>
+            <td>{{portfolio.balance | currency:'USD'}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{portfolio.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
                 <button (click)="deletePortfolio(portfolio.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="portfolio.isDeleting">
