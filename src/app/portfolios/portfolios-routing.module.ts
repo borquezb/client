@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list.component';
 import { AddEditComponent } from '../portfolios/add-edit.component';
 import {LayoutComponent} from '../users/layout.component';
+import {PortfolioComponent} from "./portfolio.component";
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     children: [
       { path: '', component: ListComponent },
       { path: 'add', component: AddEditComponent },
-      { path: 'edit/:id', component: AddEditComponent }
+      { path: 'edit/:id', component: AddEditComponent },
+      { path: 'show/:id', component: PortfolioComponent }
     ]
   }
 ];

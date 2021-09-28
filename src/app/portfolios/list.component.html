@@ -1,31 +1,32 @@
 ﻿<h1>Portfolios</h1>
 <a routerLink="add" class="btn btn-sm btn-success mb-2">Add Portfolio</a>
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th style="">Number</th>
-            <th style="">Name</th>
-            <th style="">Balance</th>
-            <th style=""></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let portfolio of portfolios">
-            <td>{{portfolio.number}}</td>
-            <td>{{portfolio.name}}</td>
-            <td>{{portfolio.balance | currency:'USD'}}</td>
-            <td style="white-space: nowrap">
-                <a routerLink="edit/{{portfolio.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deletePortfolio(portfolio.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="portfolio.isDeleting">
-                    <span *ngIf="portfolio.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!portfolio.isDeleting">Delete</span>
-                </button>
-            </td>
-        </tr>
-        <tr *ngIf="!portfolios">
-            <td colspan="4" class="text-center">
-                <span class="spinner-border spinner-border-lg align-center"></span>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th style="">Number</th>
+    <th style="">Name</th>
+    <th style="">Balance</th>
+    <th style=""></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let portfolio of portfolios">
+    <td><a routerLink="show/{{portfolio.id}}">{{portfolio.number}}</a></td>
+    <td>{{portfolio.name}}</td>
+    <td>{{portfolio.balance | currency:'USD'}}</td>
+    <td style="white-space: nowrap">
+      <a routerLink="edit/{{portfolio.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+      <button (click)="deletePortfolio(portfolio.id)" class="btn btn-sm btn-danger btn-delete-user"
+              [disabled]="portfolio.isDeleting">
+        <span *ngIf="portfolio.isDeleting" class="spinner-border spinner-border-sm"></span>
+        <span *ngIf="!portfolio.isDeleting">Delete</span>
+      </button>
+    </td>
+  </tr>
+  <tr *ngIf="!portfolios">
+    <td colspan="4" class="text-center">
+      <span class="spinner-border spinner-border-lg align-center"></span>
+    </td>
+  </tr>
+  </tbody>
 </table>
