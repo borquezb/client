@@ -1,13 +1,15 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {first} from 'rxjs/operators';
 
-import {PortfolioService} from '@app/_services';
+import {AccountService, PortfolioService} from '@app/_services';
 
 @Component({templateUrl: 'list.component.html'})
 export class ListComponent implements OnInit {
   portfolios = null;
+  users = null;
 
-  constructor(private portfolioService: PortfolioService) {
+  constructor(private portfolioService: PortfolioService,
+              private accountService: AccountService) {
   }
 
   ngOnInit() {

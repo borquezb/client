@@ -30,8 +30,8 @@
     </div>
     <div class="form-group col">
       <label for="user">Account Owner</label>
-      <select>
-        <option *ngFor="let user of users" value="{{user}}" formControlName="user" class="form-control"
+      <select formControlName="user" class="form-control">
+        <option *ngFor="let user of users" value="{{user.id}}"
                 [ngClass]="{ 'is-invalid': submitted && f.user.errors }">  {{user.firstName + ' ' + user.lastName}}  </option>
       </select>
       <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
