@@ -1,0 +1,49 @@
+<h1 *ngIf="isAddMode">Add Portfolio</h1>
+<h1 *ngIf="!isAddMode">Edit Portfolio</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="number">Number</label>
+      <input type="text" formControlName="number" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.number.errors }"/>
+      <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+        <div *ngIf="f.number.errors.required">Number is required</div>
+      </div>
+    </div>
+    <div class="form-group col">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="balance">Balance</label>
+      <input type="text" formControlName="balance" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.balance.errors }"/>
+      <div *ngIf="submitted && f.balance.errors" class="invalid-feedback">
+        <div *ngIf="f.balance.errors.required">Balance is required</div>
+      </div>
+    </div>
+    <div class="form-group col">
+      <label for="user">Account Owner</label>
+      <select>
+        <option *ngFor="let user of users" value="{{user}}" formControlName="user" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.user.errors }">  {{user.firstName + ' ' + user.lastName}}  </option>
+      </select>
+      <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+        <div *ngIf="f.user.errors.required">User is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Save
+    </button>
+    <a routerLink="/portfolios" class="btn btn-link">Cancel</a>
+  </div>
+</form>
